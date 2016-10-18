@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Moar Gold</title>
+        {% load staticfiles %}
+        <link rel="stylesheet" type="text/css" href="{% static 'gold/style.css' %}">
+    </head>
+    <body>
+        <h1>You have {{ request.session.gold }} gold!</h1>
+        <div id="choice">
+            <div class="box">
+                <h2>River</h2>
+                <p>
+                    Earn 10-20 gold by panning.
+                </p>
+                <a href="/pan"><button type="button" name="pan">Find Gold!</button></a>
+            </div>
+            <div class="box">
+                <h2>Cave</h2>
+                <p>
+                    Earn 1-30 gold by mining.
+                </p>
+                <a href="/mine"><button type="button" name="mine">Find Gold!</button></a>
+            </div>
+            <div class="box">
+                <h2>Alley</h2>
+                <p>
+                    Earn ??? gold or lose all of your gold in a fight.
+                </p>
+                <a href="/fight"><button type="button" name="fight">Find Gold!</button></a>
+            </div>
+            <div class="box">
+                <h2>Casino</h2>
+                <p>
+                    Earn or lose 0-50 gold by gambling.
+                </p>
+                <a href="/gamble"><button type="button" name="gamble">Find Gold!</button></a>
+            </div>
+        </div>
+        <div id="activity">
+            <h1>Activity:</h1>
+            <div id="activitydisp">
+                <ul>
+                    {% if length > 0 %}
+                        {% for i in activity %}
+                            <li class="none">{{ i }}</li>
+                        {% endfor %}
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+        <a href="/reset"><button type="button" name="reset">RESET</button></a>
+    </body>
+</html>
